@@ -1,0 +1,20 @@
+// https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint#settings-options
+
+{
+  "eslint.workingDirectories": [
+    {
+      "mode": "auto"
+    }
+  ],
+  "eslint.validate": [
+    //when save this type of file ->
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact"
+  ],
+  "editor.codeActionsOnSave": {
+    // <- will run this eslint action
+    "source.fixAll.eslint": "explicit"
+  }
+}
