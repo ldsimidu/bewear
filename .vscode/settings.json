@@ -16,5 +16,11 @@
   "editor.codeActionsOnSave": {
     // <- will run this eslint action
     "source.fixAll.eslint": "explicit"
-  }
+  },
+  "typescript.preferences.autoImportFileExcludePatterns": [
+    "drizzle-orm/gel-core"
+  ],
+  "javascript.preferences.autoImportFileExcludePatterns": [
+    "drizzle-orm/gel-core"
+  ]
 }
