@@ -22,17 +22,30 @@ import {
 import { Input } from "@/components/ui/input";
 
 //Data Form Schema
-const formSchema = z.object({
-  completeName: z.string("Invalid name.").trim().min(1, "Name is mandatory."),
+const formSchema = z
+  .object({
+    completeName: z.string("Invalid name.").trim().min(1, "Name is mandatory."),
 
-  email: z.string().email("Enter a valid email."),
+    email: z.string().email("Enter a valid email."),
 
-  password: z.string().min(8, "Your password needs at least 8 characters."),
+    password: z.string().min(8, "Your password needs at least 8 characters."),
 
-  passwordConfirmation: z
-    .string()
-    .min(8, "Your password needs at least 8 characters."),
-});
+    passwordConfirmation: z
+      .string()
+      .min(8, "Your password needs at least 8 characters."),
+  })
+  .refine(
+    //param data = data that I have in the schema
+    //first: happy world
+    //second: sad world & the path where the error will show
+    (data) => {
+      return data.password === data.passwordConfirmation;
+    },
+    {
+      error: "The passowrds don't match",
+      path: ["passwordConfirmation"],
+    },
+  );
 
 type FormValues = z.infer<typeof formSchema>;
 
