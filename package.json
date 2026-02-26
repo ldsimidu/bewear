@@ -9,17 +9,26 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@better-auth/cli": "^1.4.19",
+    "@hookform/resolvers": "^5.2.2",
+    "@radix-ui/react-label": "^2.1.8",
+    "@radix-ui/react-slot": "^1.2.4",
+    "@radix-ui/react-tabs": "^1.1.13",
+    "better-auth": "^1.2.12",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "dotenv": "^17.1.0",
     "drizzle-orm": "^0.44.2",
     "drizzle-seed": "^0.3.1",
+    "generate": "^0.14.0",
     "lucide-react": "^0.562.0",
     "next": "15.4.1",
     "pg": "^8.16.3",
     "react": "19.1.0",
     "react-dom": "19.1.0",
-    "tailwind-merge": "^3.4.0"
+    "react-hook-form": "^7.71.1",
+    "tailwind-merge": "^3.4.0",
+    "zod": "^4.3.5"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
