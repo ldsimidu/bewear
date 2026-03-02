@@ -1,7 +1,9 @@
 "use client";
 
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
+import { toast } from "sonner";
 import z from "zod";
 
 import { Button } from "@/components/ui/button";
@@ -22,6 +24,7 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import { authClient } from "@/lib/auth-client";
 
 const formSchema = z.object({
   email: z.email("Please, enter email address correctly."),
@@ -31,6 +34,7 @@ const formSchema = z.object({
 type FormValues = z.infer<typeof formSchema>;
 
 const LogInForm = () => {
+  const router = useRouter();
   const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -39,8 +43,26 @@ const LogInForm = () => {
     },
   });
 
-  function onSubmit(values: FormValues) {
-    console.log("LOGIN FORM VALIDATED AND SENT");
+  async function onSubmit(values: FormValues) {
+    await authClient.signIn.email({
+      email: values.email,
+      password: values.password,
+      fetchOptions: {
+        onSuccess: () => {
+          toast.success("Logged in successfully, welcome!");
+          router.push("/");
+        },
+        onError: (context) => {
+          console.log("ERROR COMPLETO:", context);
+          if (context.error.code == "INVALID_EMAIL_OR_PASSWORD") {
+            toast.error("Incorrect email or password, please try changing it.");
+            return form.setError("email", {
+              message: "Incorrect email or password",
+            });
+          }
+        },
+      },
+    });
   }
 
   return (
