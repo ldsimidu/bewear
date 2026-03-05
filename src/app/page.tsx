@@ -1,6 +1,7 @@
 import { Landmark } from "lucide-react";
 import Image from "next/image";
 
+import CateorySelector from "@/components/common/category-selector";
 import Header from "@/components/common/header";
 import ProductList from "@/components/common/product-list";
 import { db } from "@/db";
@@ -11,6 +12,7 @@ export default async function Home() {
       variants: true,
     },
   });
+  const categories = await db.query.categoryTable.findMany({});
 
   return (
     <>
@@ -27,6 +29,11 @@ export default async function Home() {
       </div>
 
       <ProductList products={products} title="Mais vendidos" />
+
+      <div className="p-5">
+        <CateorySelector categories={categories} />
+      </div>
+
       <div className="space-y-6 p-5">
         <Image
           src="/banners/banner-02.png"
