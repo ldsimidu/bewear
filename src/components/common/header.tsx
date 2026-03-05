@@ -21,7 +21,12 @@ const Header = () => {
   return (
     <header className="flex items-center justify-between p-5">
       <Link href="/">
-        <Image src="/logo.svg" alt="BEWEAR" width={100} height={26.14} />
+        <Image
+          src="/bewear-logo/logo.svg"
+          alt="BEWEAR"
+          width={100}
+          height={26.14}
+        />
       </Link>
 
       <div className="flex items-center">
@@ -69,7 +74,7 @@ const Header = () => {
             ) : (
               <div className="flex items-center">
                 <div className="items-center p-5">
-                  <h2 className="font-semibold">
+                  <h2 className="pb-4 font-semibold">
                     You are not logged into any account... :(
                   </h2>
                   <h3 className="font-extralight">
