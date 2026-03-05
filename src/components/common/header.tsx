@@ -74,7 +74,7 @@ const Header = () => {
             ) : (
               <div className="flex items-center">
                 <div className="items-center p-5">
-                  <h2 className="font-semibold">
+                  <h2 className="pb-4 font-semibold">
                     You are not logged into any account... :(
                   </h2>
                   <h3 className="font-extralight">
