@@ -67,6 +67,22 @@ export const accountTable = pgTable(
   (table) => [index("account_userId_idx").on(table.userId)],
 );
 
+export const verificationTable = pgTable(
+  "verification",
+  {
+    id: text("id").primaryKey(),
+    identifier: text("identifier").notNull(),
+    value: text("value").notNull(),
+    expiresAt: timestamp("expires_at").notNull(),
+    createdAt: timestamp("created_at").defaultNow().notNull(),
+    updatedAt: timestamp("updated_at")
+      .defaultNow()
+      .$onUpdate(() => /* @__PURE__ */ new Date())
+      .notNull(),
+  },
+  (table) => [index("verification_identifier_idx").on(table.identifier)],
+);
+
 export const userRelations = relations(userTable, ({ many }) => ({
   sessions: many(sessionTable),
   accounts: many(accountTable),
