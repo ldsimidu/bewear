@@ -2,6 +2,7 @@ import { desc } from "drizzle-orm";
 import { Landmark } from "lucide-react";
 import Image from "next/image";
 
+import BrandSelector from "@/components/common/brand-selector";
 import CateorySelector from "@/components/common/category-selector";
 import Footer from "@/components/common/footer";
 import Header from "@/components/common/header";
@@ -40,6 +41,7 @@ export default async function Home() {
           />
         </div>
 
+        <BrandSelector />
         <ProductList products={products} title="Mais vendidos" />
 
         <div className="p-5">
