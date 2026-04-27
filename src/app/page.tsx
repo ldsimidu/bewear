@@ -46,7 +46,8 @@ export default async function Home() {
 
         <div className="p-5">
           <CateorySelector categories={categories} />
-
+        </div>
+        <div className="p-5">
           <Image
             src="/banners/banner-02.png"
             alt="Banner, Leve uma vida com estilo"
