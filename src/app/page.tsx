@@ -42,11 +42,16 @@ export default async function Home() {
         </div>
 
         <BrandSelector />
-        <ProductList products={products} title="Mais vendidos" />
+        <ProductList
+          componentSpace="p-5"
+          products={products}
+          title="Mais vendidos"
+        />
 
         <div className="p-5">
           <CateorySelector categories={categories} />
-
+        </div>
+        <div className="p-5">
           <Image
             src="/banners/banner-02.png"
             alt="Banner, Leve uma vida com estilo"
@@ -57,7 +62,11 @@ export default async function Home() {
           />
         </div>
 
-        <ProductList products={nearlyCreatedProducts} title="Novos produtos" />
+        <ProductList
+          componentSpace="p-5"
+          products={nearlyCreatedProducts}
+          title="Novos produtos"
+        />
 
         <Footer />
       </div>
